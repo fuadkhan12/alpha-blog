@@ -1,8 +1,27 @@
-<h1>This is articles show page</h1>
+<div id="page-content">
+  <h1 class="text-center mt-4 font-weight-bold"><%= @article.title %></h1>
 
-<p><strong>Title: </strong><%= @article.title %></p>
-<p><strong>Description: </strong><%= @article.description %></p>
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow bg-white rounded">
+          <div class="card-header font-italic">
+            by Fuad Khan
+          </div>
 
-<%= link_to 'Edit article', edit_article_path(@article) %> |
-<%= link_to 'Delete article', article_path(@article), method: :delete, data: { confirm: 'Are you sure? ' } %> |
-<%= link_to 'Return to articles list', articles_path %>
+          <div class="card-body">
+            <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+            <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-outline-info' %>
+            <%= link_to 'Delete', article_path(@article), class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+
+          <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(@article.created_at) %> ago,
+              edited <%= time_ago_in_words(@article.updated_at) %> ago
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
