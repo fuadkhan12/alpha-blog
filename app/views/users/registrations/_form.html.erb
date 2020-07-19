@@ -20,6 +20,16 @@
           </div>
         </div>
 
+        <% unless resource.new_record? %>
+          <div class="form-group row">
+            <label for="password_confirmation" class="col-2 col-form-label text-light">Current Password</label>
+
+            <div class="col-10">
+              <%= f.password_field :current_password, class: 'form-control shadow rounded', placeholder: 'Current Password' %>
+            </div>
+          </div>
+        <% end %>
+
         <div class="form-group row">
           <label for="password" class="col-2 col-form-label text-light">Password</label>
 
@@ -37,7 +47,7 @@
         </div>
 
         <div class="form-group row justify-content-center">
-          <%= f.submit "Sign up", class: 'btn btn-outline-light btn-lg' %>
+          <%= f.submit resource.new_record? ? "Sign up" : "Update account", class: 'btn btn-outline-light btn-lg' %>
         </div>
       <% end %>
     </div>
